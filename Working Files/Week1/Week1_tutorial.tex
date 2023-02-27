@@ -1,0 +1,119 @@
+\documentclass[a4paper,12pt]{article} % The document class with options
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amsfonts, amssymb}
+\usepackage{graphicx}
+\usepackage[margin=2cm]{geometry}
+\usepackage[many]{tcolorbox}
+\usepackage[shortlabels]{enumitem}
+\setlength{\parindent}{0em}
+\newtcolorbox{mybox}[1]{%
+    tikznode boxed title,
+    enhanced,
+    arc=0mm,
+    interior style={white},
+    attach boxed title to top center= {yshift=-\tcboxedtitleheight/2},
+    fonttitle=\bfseries,
+    colbacktitle=white,coltitle=black,
+    boxed title style={size=normal,colframe=white,boxrule=0pt},
+    title={#1}}
+
+\title{Week 1 Tutorial}
+\author{Kane O'Brien}
+\date{\today}
+\begin{document}
+\maketitle
+
+\textbf{Question 1:} Convert to dBW and dBm the following power levels:
+\begin{enumerate}[(a)]
+    \item $100W$
+    
+        $$10 \log(100) = 20 dBW $$
+        $$10 \log(100 \times 10^3) = 50 dBm$$ 
+    \item $10kW$
+    
+        $$10 \log(10 \times 10^3) = 40 dBW$$
+        $$10 \log(100 \times 10^3\times 10^3) = 70 dBm$$
+    \item $0.1W$
+    
+        $$10 \log(0.1) = -10 dBW$$
+        $$10 \log(0.1 \times 10^3) = 20 dBm$$
+
+    \item $10^-14$W
+    
+        $$10 \log(10^{-14}) = -140 dBW$$
+        $$10 \log(10^{-11}) = -110 dBm$$
+
+\end{enumerate}
+
+\textbf{Question 2:} Find the delay times associated with the following target ranges:
+
+\vspace{1ex}
+$$ v =\frac{d}{t} => t=\frac{d}{v} => t=\frac{2R}{v}$$
+\begin{enumerate}[(a)]
+    \item $5$m
+    
+    $$t=\frac{2.5}{3\times10^8} = \frac{10}{3\times10^8} = 33 nS$$
+    \item $1$ km
+    
+    $$t=\frac{2\times1\times10^3}{3\times10^8} = \frac{2\times10^3}{3\times10^8} = 6.67 \mu S$$
+    \item $100$ km
+    
+    $$t=\frac{2\times100\times10^3}{3\times10^8} = \frac{200\times10^3}{3\times10^8} = 666.67 \mu S$$
+    \item $3000$ km
+    
+   $$t=\frac{2\times3000\times10^3}{3\times10^8} = \frac{6000\times10^3}{3\times10^8} = 20mS$$
+\end{enumerate}
+
+\vspace{1ex}
+\textbf{Question 3:} The intensity of a transmitted electromagnetic wave at a range of 500m from the radar is $0.04$ W/m$^2$. What is the intensity at 2 km?
+
+\vspace*{1ex}
+Range increases by 3x, $U_0 \propto \frac{1}{R^2}$; therefore the power is proportional to $\frac{1}{3^2}$
+\vspace*{1ex}
+
+$$\frac{1}{9}\times 0.04 = 4.44 mW/m^2 $$
+
+\vspace{1ex}
+\textbf{Question 4:} Consider a 1 MW transmitter through a 30 dB antenna. What would the spatial power density on the surface of the moon assuming no losses, free space propagation etc? Use 384000km for the distance.
+
+\vspace*{1ex}
+$$P_r = \frac{P_t G_t}{4\pi R^2} \text{    where $G_t$, linear = $10^3$}$$ 
+
+$$P_r = \frac{1\times10^6 \times10^3}{4\pi \times384000^2}$$
+
+\vspace*{1ex}
+$$P_r = 539.6 \mu W/m^2$$
+
+
+\vspace{1ex}
+\textbf{Question 5:} A radar transmits rectangular pulses of width $1 \mu$s and peak power 1MW. Determine the range resolution and energy of the transmitted pulse.
+
+\vspace*{1ex}
+Range Resolution : $\tau = \frac{2R}{c} => R = \frac{\tau c}{2}$
+
+$$ R = \frac{\tau c}{2} = \frac{1\times10^{-6} \times 3\times10^8}{2} = \frac{3^2}{2} = 4.5m $$
+
+\vspace*{1ex}
+Pulse energy : Integrate the pulse width over time. $\int P_t d\tau$
+
+$$ = 1\times10^6\times1\times10^{-6} = 1W$$
+
+
+\vspace{1ex}
+\textbf{Question 6:} What (uncompressed) pulse width is required to give a range resoution of 15 m?
+
+\vspace*{1ex}
+$$\tau = \frac{2R}{c} = \frac{2\times 15}{3\times10^8} = \frac{30}{3\times10^8} = 100 nS$$
+
+
+\vspace{2ex}
+\textbf{Question 7:}
+ When an input voltage of 2V is applied to an amplifier an output voltage of 64V is measured. What is the gain of the amplifer in linear and logarithmic units?
+
+ \vspace*{1ex}
+
+ $$Av = \frac{V_{out}}{V_{in}} = \frac{64}{2} = 32x $$ linear
+
+ $$Av_{(dB)} = 20 \log (32) = 30.102 dB$$
+
+\end{document}
